@@ -1,8 +1,10 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
+<div class="w-full flex flex-col lg:flex-row-reverse justify-start lg:justify-end p-6">
+  <div>
+    <div>
+      <% if notice.present? %>
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
+    </div>
 
     <%= (@lesson.video.present?) ? (video_tag @lesson.video, autoplay: false, controls: true, class: "rounded") : "Video  not available"%>
 
@@ -15,5 +17,9 @@
       <%= link_to "Mark as complete", course_lesson_path(@course, @lesson), data: { 'turbo-method' => :put }, class: "bg-green-500 rounded text-white-50 hover:bg-green-500 py-2 px-4" %>
     </div>
 
+  </div>
+
+  <div class="sidebar_container lg:min-w-60 lg:mr-4 lg:overflow-y-scroll">
+    <%= render 'sidebar', course: @course %>
   </div>
 </div>

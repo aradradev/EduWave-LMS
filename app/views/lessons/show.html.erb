@@ -1,0 +1,25 @@
+<div class="w-full flex flex-col lg:flex-row-reverse justify-start lg:justify-end p-6">
+  <div>
+    <div>
+      <% if notice.present? %>
+      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+    <% end %>
+    </div>
+
+    <%= (@lesson.video.present?) ? (video_tag @lesson.video, autoplay: false, controls: true, class: "rounded") : "Video  not available"%>
+
+    <div class="my-2 border p-4 rounded">
+      <h1 class="text-2xl font-semibold"><%= @lesson.title %></h1>
+      <p class="text-gray-700"><%= @lesson.description %></p>
+    </div>
+
+    <div class="my-6 lg:mb-0">
+      <%= link_to "Mark as complete", course_lesson_path(@course, @lesson), data: { 'turbo-method' => :put }, class: "bg-green-500 rounded text-white-50 hover:bg-green-500 py-2 px-4" %>
+    </div>
+
+  </div>
+
+  <div class="sidebar_container lg:min-w-60 lg:mr-4 lg:overflow-y-scroll">
+    <%= render 'sidebar', course: @course %>
+  </div>
+</div>

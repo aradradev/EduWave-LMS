@@ -11,23 +11,17 @@ class Course < ApplicationRecord
   end
 
   def next_lesson(current_user)
-    if current_user.blank?
-      return self.lessons.order(:position).first
-    end
+    return lessons.order(:position).first if current_user.blank?
 
-    completed_lessons = current_user.lesson_users.includes(:lesson).where(completed: true).where(lessons: { course_id: self.id })
-      
-    started_lessons = current_user.lesson_users.includes(:lesson).where(completed: false).where(lesson: { course_id: self.id })
-    
-    if started_lessons.any?
-      started_lessons.lesson.first
-    end
+    completed_lessons = current_user.lesson_users.includes(:lesson).where(completed: true).where(lessons: { course_id: id })
+
+    started_lessons = current_user.lesson_users.includes(:lesson).where(completed: false).where(lesson: { course_id: id })
+
+    started_lessons.lesson.first if started_lessons.any?
 
     lessons = self.lessons.where.not(id: completed_lessons.pluck(:lesson_id)).order(:position)
-    if lessons.any?
-      lessons.first
-    else
-      return self.lessons.order(:position).first
-    end
+    return self.lessons.order(:position).first unless lessons.any?
+
+    lessons.first
   end
 end

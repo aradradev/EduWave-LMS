@@ -1,11 +1,11 @@
 class Lesson < ApplicationRecord
   has_one_attached :video
   belongs_to :course
-  
+
   has_many :lesson_users, dependent: :destroy
-  
+
   before_create :set_position
-  
+
   private
 
   def set_position

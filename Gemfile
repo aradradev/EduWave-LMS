@@ -66,5 +66,6 @@ end
 
 gem 'devise', '~> 4.9'
 gem 'font-awesome-sass', '~> 6.5.1'
+gem 'paydunya'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'stripe', '~> 10.3'

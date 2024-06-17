@@ -14,5 +14,5 @@
  *= require_self
  */
 
-@import 'font-awesome'
-@import 'actiontext.css';
+@import 'font-awesome' screen;
+@import 'actiontext.scss' print;

@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   post "/webhook" => "webhooks#stripe"
 
   namespace :admin do
-    resources :courses
+    resources :courses do
+      resources :lessons
+    end
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

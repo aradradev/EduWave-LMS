@@ -64,6 +64,7 @@ group :development do
   # gem "spring"
 end
 
+gem 'acts_as_list', '~> 1.2'
 gem 'devise', '~> 4.9'
 gem 'font-awesome-sass', '~> 6.5.1'
 gem 'paydunya'

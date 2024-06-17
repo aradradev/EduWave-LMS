@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_224418) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_16_113353) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_224418) do
     t.string "stripe_id"
     t.text "premium"
     t.string "paydunya_id"
+    t.text "premium_description"
   end
 
   create_table "lesson_users", force: :cascade do |t|

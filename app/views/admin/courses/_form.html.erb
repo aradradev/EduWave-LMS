@@ -18,14 +18,27 @@
 
   <div class="flex flex-col mt-4">
     <label for="name">Description</label>
-    <%= form.rich_text :description, class: "rounded border-gray-200", id: 'description', placeholder: "Description" %>
+    <%= form.rich_text_area :description, class: "rounded border-gray-200", id: 'description', placeholder: "Description" %>
   </div>
   <div class="flex flex-col mt-4">
     <label for="name">Stripe Price ID</label>
-    <%= form.rich_text :stripe_price_id, class: "rounded border-gray-200", id: 'stripe_price_id' %>
+    <%= form.text_field :stripe_price_id, class: "rounded border-gray-200", id: 'stripe_price_id' %>
+  </div>
+  <div class="flex flex-col mt-4">
+    <%= admin_course.image.present? ? (image_tag admin_course.image, class: "w-64 rounded mb-2") : nil %>
+    <label for="name">Cover Image</label>
+    <%= form.file_field :image, id: "image" %>
+  </div>
+  <div class="flex flex-col mt-4">
+    <label for="name">Paid</label>
+    <%= form.check_box :paid, class: "rounded border-gray-200", id: "paid" %>
+  </div>
+  <div class="flex flex-col mt-4">
+    <label for="name">Premium Course Description</label>
+    <%= form.rich_text_area :premium_description, id: "premium_description", class: "rounded border-gray-200", placeholder: "Premium course description" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="mt-4">
+    <%= form.submit "Submit", class: "bg-amaranth-500 hover:bg-amaranth-700 text-white-50 cursor-pointer rounded py-2 px-4" %>
   </div>
 <% end %>

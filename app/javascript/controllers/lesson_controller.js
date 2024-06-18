@@ -7,7 +7,7 @@ export default class extends Sortable {
     super.onUpdate(e)
     const newIndex = e.newIndex
     const id = e.item.id
-    const courseId = e.courseValue
+    const courseId = this.courseValue
 
     fetch(`/admin/courses/${ courseId }/lessons/${ id }/move`,{
       method: 'PATCH',

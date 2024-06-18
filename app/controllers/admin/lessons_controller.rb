@@ -1,7 +1,12 @@
 class Admin::LessonsController < AdminController
-    before_action :set_admin_course
+    before_action :set_course
+    before_action :set_lesson, only: [:show]
     def index
         @admin_lessons = @admin_course.lessons.order(:position)
+    end
+
+
+    def show
     end
 
     def move
@@ -20,8 +25,12 @@ class Admin::LessonsController < AdminController
 
     private
 
-    def set_admin_course
+    def set_course
         @admin_course = Course.find(params[:course_id])
+    end
+
+    def set_lesson
+        @lesson = @admin_course.lessons.find(params[:id])
     end
 
 end

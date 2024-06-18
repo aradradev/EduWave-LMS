@@ -12,11 +12,11 @@ class Lesson < ApplicationRecord
   before_create :set_position
 
   def next_lesson
-    course.lessons.where("position > ?", position).order(:position).first
+    course.lessons.where('position > ?', position).order(:position).first
   end
 
   def previous_lesson
-    course.lessons.where("position < ?", position).order(:position).last
+    course.lessons.where('position < ?', position).order(:position).last
   end
 
   private

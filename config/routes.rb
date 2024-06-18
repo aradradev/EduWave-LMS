@@ -23,9 +23,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :courses do
-      resources :lessons do
-        patch 'move', on: :member
-      end
+      resources :lessons
     end
   end
 

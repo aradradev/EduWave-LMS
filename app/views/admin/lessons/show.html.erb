@@ -4,7 +4,5 @@
 
 <div>
   <%= link_to "Edit this lesson", edit_admin_course_lesson_path(@admin_course, @admin_lesson) %> |
-  <%= link_to "Back to lessons", admin_lessons_path %>
-
-  <%= button_to "Destroy this lesson", @admin_lesson, method: :delete %>
+  <%= link_to "Back to course", admin_course_path(@admin_course) %>
 </div>

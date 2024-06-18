@@ -1,6 +1,6 @@
 class Admin::LessonsController < AdminController
   before_action :set_course
-  before_action :set_lesson, only: [:show]
+  before_action :set_lesson, only: %i[show move]
   def index
     @admin_lessons = @admin_course.lessons.order(:position)
   end
@@ -10,15 +10,18 @@ class Admin::LessonsController < AdminController
   def move
     position = params[:position].to_i
     if position.zero?
-      @lesson.move_to_top
-    elsif @course.lessons.count - 1
-      @lesson.move_to_bottom
+      @admin_lesson.move_to_top
+    elsif position >= @course.lessons.count - 1
+      @admin_lesson.move_to_bottom
     else
-      @lesson.insert_at(position + 1)
+      @admin_lesson.insert_at(position + 1)
     end
 
-    @lesson.save!
-    render json: { message: 'success' }
+    if @admin_lesson.save!
+      render json: { message: 'success' }
+    else
+      render json: {message: 'error'}, status: :unprocessable_entity 
+    end
   end
 
   private
@@ -28,6 +31,6 @@ class Admin::LessonsController < AdminController
   end
 
   def set_lesson
-    @lesson = @admin_course.lessons.find(params[:id])
+    @admin_lesson = @admin_course.lessons.find(params[:id])
   end
 end

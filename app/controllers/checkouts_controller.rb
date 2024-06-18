@@ -19,7 +19,6 @@ class CheckoutsController < ApplicationController
     )
 
     redirect_to session.url, allow_other_host: true
-
   end
 
   private
@@ -30,7 +29,7 @@ class CheckoutsController < ApplicationController
   end
 
 
-  
+
 
   # Create with Paydunya
   # def create
@@ -48,7 +47,7 @@ class CheckoutsController < ApplicationController
 
   #   paydunya_invoice.description = "Payment for the course #{course.title}"
   #   paydunya_invoice.total_amount = course.price
-    
+
   #   if paydunya_invoice.create
   #     redirect_to paydunya_invoice.url
   #   else
@@ -70,5 +69,4 @@ class CheckoutsController < ApplicationController
   #   end
 
   # end
-
 end

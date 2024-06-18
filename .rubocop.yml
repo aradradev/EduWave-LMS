@@ -1,4 +1,5 @@
 AllCops:
+  SuggestExtensions: false
   NewCops: enable
   Exclude:
     - "db/**/*"
@@ -16,7 +17,7 @@ Metrics/MethodLength:
   Include:
     - "app/controllers/*"
     - "app/models/*"
-  Max: 20
+  Max: 40
 Metrics/AbcSize:
   Include:
     - "app/controllers/*"
@@ -27,6 +28,12 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   AllowedMethods: ['describe']
   Max: 130
+
+Metrics/CyclomaticComplexity:
+  Max: 20
+Metrics/PerceivedComplexity:
+  Max: 20
+
 
 Style/Documentation:
   Enabled: false

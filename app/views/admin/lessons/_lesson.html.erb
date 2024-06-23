@@ -1,0 +1,23 @@
+<div id="<%= dom_id lesson %>", class="mx-w-sm min-w-64 rounded-b overflow-hidden shadow-lg hover:bg-amaranth-100">
+    <%= link_to [:admin, @admin_course, lesson] do %>
+        <% if lesson.video.present? %>
+            <% begin %>
+                <%= image_tag lesson.video.preview(resize_to_limit: [320, 180]).processed, class: "w-full rounded-t" %>
+            <% rescue ActiveStorage::UnpreviewableError, ActiveStorage::InvariableError %>
+                <%= image_tag("https://via.placeholder.com/320x180", class: "w-full rounded-t")%>
+            <% end %>
+            
+            <% else %>
+            <%= image_tag("https://via.placeholder.com/320x180") %>
+        <% end %>
+        <div class="py-4 px-6">
+            <div class="font-bold text-xl mb-2">
+                <% if lesson.paid %>
+                    <%= icon('fa-solid', 'lock', class: "mr-2 text-gray-600") %>
+                <% end %>
+                <%= lesson.title %>
+            </div>
+        </div>
+    <% end %>
+    
+</div>
